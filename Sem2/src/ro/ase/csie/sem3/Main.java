@@ -3,6 +3,9 @@ package ro.ase.csie.sem3;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -14,7 +17,7 @@ public class Main {
 		CreditBankAccount b1 = new CreditBankAccount("RFZ123123123", p1, -500);
 		
 		Person p2 = new Person("Arnold");
-		DebitBankAccount b2 = new DebitBankAccount("INGB12432423", p2);
+		DebitBankAccount b2 = new FeeBankAccount("INGB12432423", p2);
 		
 		Person p3 = new Person("Van Damme");
 		DebitBankAccount b3 = new DebitBankAccount("BT12312323", p3);
@@ -39,6 +42,15 @@ public class Main {
 			} catch (InsuficientFundsException ex) {
 				System.out.println(ex.getMessage());
 			}
+		}
+		
+		
+		System.out.println("\n\n");
+		
+		try {
+			b2.transfer(b3, 200);
+		} catch (InsuficientFundsException e) {
+			System.out.println(e.getMessage());
 		}
 		
 	}
