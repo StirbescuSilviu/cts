@@ -1,12 +1,9 @@
 package ro.ase.csie.sem3;
 
-public class BankAccount implements Account {
-	private String iban;
-	private long balance;
+public class DebitBankAccount extends BankAccount implements Payable, Receivable {
 
-	private Person accountHolder;
 
-	public BankAccount(String iban, Person person) {
+	public DebitBankAccount(String iban, Person person) {
 		this.iban = iban;
 		this.accountHolder = person;
 		balance = 0;
@@ -14,7 +11,7 @@ public class BankAccount implements Account {
 
 	@Override
 	public void withdraw(long amount) throws InsuficientFundsException {
-		if (amount > balance)
+		{if (amount > balance)
 			throw new InsuficientFundsException("Insuficient funds " + balance);
 		System.out.println("withdrawing " + amount + " from " + iban);
 		balance -= amount;
@@ -36,6 +33,10 @@ public class BankAccount implements Account {
 
 	public Person getAccountHolder() {
 		return accountHolder;
+	}
+	public void transfer(Receivable destionation, long amount) throws {
+		this.withdraw(amount);
+		destination.deposit(amount);
 	}
 
 }

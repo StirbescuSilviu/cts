@@ -1,24 +1,17 @@
 package ro.ase.csie.sem3;
 
-public class CreditBankAccount implements Account {
- private long balance;
- private String iban;
- private Person accounHolder;
- 
-public CreditBankAccount(String iban, Person accountHolder,long balance) {
-	this.iban=iban;
-	this.accounHolder=accountHolder;
-	this.balance=balance;
-}	
-	public void withdraw(long amount) throws InsuficientFundsException {
-		throw new UnsupportedOperationException("Cannot withdraw from this account");
-		
+public class CreditBankAccount extends BankAccount implements Receivable {
 
+	public CreditBankAccount(String iban, Person accountHolder, long balance) {
+		this.iban = iban;
+		this.accountHolder = accountHolder;
+		this.balance = balance;
 	}
 
 	@Override
 	public void deposit(long amount) {
-		// TODO Auto-generated method stub
+		System.out.println("Adding " + amount + " to " + iban);
+		this.balance += amount;
 
 	}
 
