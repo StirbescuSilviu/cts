@@ -14,10 +14,11 @@ public class ProxyLogin implements InterfataModulLogin {
 	@Override
 	public boolean login(String username, String pass) {
 		int nrIncercariNereusite = nrIncercari.get(username);
-		if (nrIncercariNereusite == 0) {
+		if (nrIncercariNereusite == null) {
 			nrIncercari.put(username, 0);
 			nrIncercariNereusite = 0;
 		}
+	
 
 		if (modulLogin != null) {
 			if (nrIncercariNereusite < NR_MAX_INCERCARI) {
