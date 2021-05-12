@@ -1,0 +1,7 @@
+package ro.ase.csie.g1087.dp.observer;
+
+public interface InterfataStatusConexiune {
+	
+	public void notificarePierdereConexiune();
+	
+}
