@@ -14,6 +14,7 @@ import org.junit.validator.PublicClassValidator;
 
 import com.sun.tools.javac.code.TypeTag.NumericClasses;
 
+import ro.ase.csie.g1087.testare.exceptii.ExceptieNota;
 import ro.ase.csie.g1087.testare.exceptii.ExceptieNume;
 import ro.ase.csie.g1087.testare.exceptii.ExceptieVarsta;
 import ro.ase.csie.g1087.testare.modele.Student;
@@ -93,8 +94,28 @@ public class TestStudent {
 		
 	}
 
+	@Test 
+	public void testGetNotaMinimaOrderingSortateCrescator() throws ExceptieNota {
+		
+		int notaMinima=4;
+		ArrayList<Integer> noteSortate = new ArrayList<>();
+		for(int i =0; i< 5;i++) {
+			noteSortate.add(notaMinima+i);
+		}
+		student.setNote(noteSortate);
+		int notaDeterminata = student.getNotaMinima();
+		assertEquals("test note sortate crescator", notaMinima, notaDeterminata);
+	}
 
-
+	@Test
+	public void testGetNotaMinimaCardinalityZero() throws ExceptieNota{
+		ArrayList<Integer> note = new ArrayList<>();
+		student.setNote(note);
+		
+		int notaMinima= 0;
+		int notaMinimaCalcula= student.getNotaMinima();
+		assertEquals("Test fara note", notaMinima,notaMinimaCalcula);
+	}
 
 
 }
